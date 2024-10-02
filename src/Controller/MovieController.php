@@ -9,31 +9,31 @@ use Symfony\Component\HttpFoundation\Response;
 #[Route('/movie')]
 final class MovieController extends AbstractController
 {
-    #[Route('/details')]
+    #[Route('/details', name: 'details')]
     public function details(): Response
     {
         return $this->render('movie/detail.html.twig');
     }
 
-    #[Route('/list')]
+    #[Route('/list', name: 'list')]
     public function list(): Response
     {
-        return $this->render('movie/list.html.twig');
+        return $this->render('movie/lists.html.twig');
     }
 
-    #[Route('/category')]
+    #[Route('/category', name: 'category')]
     public function category(): Response
     {
         return $this->render('movie/category.html.twig');
     }
 
-    #[Route('/tv-shows')]
+    #[Route('/tv-shows', name: 'tv_shows')]
     public function tvShowDetail(): Response
     {
         return $this->render('movie/detail_tv_show.html.twig');
     }
 
-    #[Route('/discover')]
+    #[Route('/discover', name: 'discover')]
     public function discover(): Response
     {
         return $this->render('movie/discover.html.twig');

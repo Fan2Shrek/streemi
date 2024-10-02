@@ -15,13 +15,13 @@ final class HomeController extends AbstractController
         return $this->render('index.html.twig');
     }
 
-    #[Route('/upload')]
+    #[Route('/upload', name: 'upload')]
     public function upload(): Response
     {
         return $this->render('upload.html.twig');
     }
 
-    #[Route('/abonnements')]
+    #[Route('/abonnements', name: 'abonnements')]
     public function abonnements(): Response
     {
         return $this->render('abonnements.html.twig');
