@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body class="font-montserrat text-sm bg-white">
+        <div class="flex min-h-screen">
+            {{ include('layout/_left-menu.html.twig') }}
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </body>
+{% endblock %}

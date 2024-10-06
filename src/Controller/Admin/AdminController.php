@@ -32,4 +32,10 @@ final class AdminController extends AbstractController
     {
         return $this->render('admin/add_films.html.twig');
     }
+
+    #[Route('/upload', name: 'admin_upload')]
+    public function upload(): Response
+    {
+        return $this->render('admin/upload.html.twig');
+    }
 }
