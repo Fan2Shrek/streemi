@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,5 +38,16 @@ final class MovieController extends AbstractController
     public function discover(): Response
     {
         return $this->render('movie/discover.html.twig');
+    }
+
+    public function getLastAddedToList(MediaRepository $mediaRepository, int $count = 3): Response
+    {
+        // $movies = $mediaRepository->findLastAddedToList($this->getUser(), $count);
+        $movies = $mediaRepository->findAll();
+
+
+        return $this->render('components/_last-added-movie.html.twig', [
+            'films' => $movies,
+        ]);
     }
 }

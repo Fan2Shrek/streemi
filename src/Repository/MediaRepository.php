@@ -15,4 +15,16 @@ class MediaRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Media::class);
     }
+
+    public function findLastAddedToList($user, $count)
+    {
+        return $this->createQueryBuilder('m')
+            ->join('m.list', 'l')
+            ->where('l.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('l.createdAt', 'DESC')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getResult();
+    }
 }
