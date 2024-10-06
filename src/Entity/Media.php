@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MediaRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use \App\Enum\MediaTypeEnum;
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
 class Media
@@ -17,13 +18,16 @@ class Media
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[ORM\Column(enumType: MediaTypeEnum::class)]
+    private ?MediaTypeEnum $mediaType = null;
+
     #[ORM\Column(type: Types::TEXT)]
     private ?string $shortDescription = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $longDescription = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $releaseDate = null;
 
     #[ORM\Column(length: 255)]
@@ -33,7 +37,7 @@ class Media
     private array $staff = [];
 
     #[ORM\Column]
-    private array $cast = [];
+    private array $casting = [];
 
     public function getId(): ?int
     {
@@ -48,6 +52,18 @@ class Media
     public function setTitle(string $title): static
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getMediaType(): ?MediaTypeEnum
+    {
+        return $this->mediaType;
+    }
+
+    public function setMediaType(MediaTypeEnum $mediaType): static
+    {
+        $this->mediaType = $mediaType;
 
         return $this;
     }
@@ -112,14 +128,14 @@ class Media
         return $this;
     }
 
-    public function getCast(): array
+    public function getCasting(): array
     {
-        return $this->cast;
+        return $this->casting;
     }
 
-    public function setCast(array $cast): static
+    public function setCasting(array $casting): static
     {
-        $this->cast = $cast;
+        $this->casting = $casting;
 
         return $this;
     }

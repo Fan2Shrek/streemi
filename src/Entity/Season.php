@@ -13,22 +13,22 @@ class Season
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $seasonNumber = null;
+    #[ORM\Column(length: 255)]
+    private ?string $number = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getSeasonNumber(): ?int
+    public function getNumber(): ?string
     {
-        return $this->seasonNumber;
+        return $this->number;
     }
 
-    public function setSeasonNumber(int $seasonNumber): static
+    public function setNumber(string $number): static
     {
-        $this->seasonNumber = $seasonNumber;
+        $this->number = $number;
 
         return $this;
     }

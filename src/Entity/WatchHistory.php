@@ -14,36 +14,36 @@ class WatchHistory
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $lastWatched = null;
+    private ?\DateTimeImmutable $lastWatchedAt = null;
 
     #[ORM\Column]
-    private ?int $numberOfView = null;
+    private ?int $numberOfViews = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLastWatched(): ?\DateTimeImmutable
+    public function getLastWatchedAt(): ?\DateTimeImmutable
     {
-        return $this->lastWatched;
+        return $this->lastWatchedAt;
     }
 
-    public function setLastWatched(\DateTimeImmutable $lastWatched): static
+    public function setLastWatchedAt(\DateTimeImmutable $lastWatchedAt): static
     {
-        $this->lastWatched = $lastWatched;
+        $this->lastWatchedAt = $lastWatchedAt;
 
         return $this;
     }
 
-    public function getNumberOfView(): ?int
+    public function getNumberOfViews(): ?int
     {
-        return $this->numberOfView;
+        return $this->numberOfViews;
     }
 
-    public function setNumberOfView(int $numberOfView): static
+    public function setNumberOfViews(int $numberOfViews): static
     {
-        $this->numberOfView = $numberOfView;
+        $this->numberOfViews = $numberOfViews;
 
         return $this;
     }

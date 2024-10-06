@@ -4,6 +4,6 @@ namespace App\Enum;
 
 enum MediaTypeEnum: string
 {
-    case EPISODE = 'episode';
     case MOVIE = 'movie';
+    case TV_SHOW = 'tv_show';
 }
