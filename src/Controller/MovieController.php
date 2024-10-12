@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Media;
 use App\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,10 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 #[Route('/movie')]
 final class MovieController extends AbstractController
 {
-    #[Route('/details', name: 'details')]
-    public function details(): Response
+    #[Route('/details/{id}', name: 'details')]
+    public function details(Media $media): Response
     {
-        return $this->render('movie/detail.html.twig');
+        return $this->render('movie/detail.html.twig', [
+            'media' => $media,
+        ]);
     }
 
     #[Route('/list', name: 'list')]
@@ -43,7 +46,7 @@ final class MovieController extends AbstractController
     public function getLastAddedToList(MediaRepository $mediaRepository, int $count = 3): Response
     {
         // $movies = $mediaRepository->findLastAddedToList($this->getUser(), $count);
-        $movies = $mediaRepository->findAll();
+        $movies = $mediaRepository->findBy([], limit: $count);
 
 
         return $this->render('components/_last-added-movie.html.twig', [
