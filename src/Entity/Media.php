@@ -33,6 +33,9 @@ class Media
     #[ORM\Column(length: 255)]
     private ?string $coverImage = null;
 
+    #[ORM\Column(type: Types::FLOAT)]
+    private ?float $note = null;
+
     #[ORM\Column]
     private array $staff = [];
 
@@ -112,6 +115,18 @@ class Media
     public function setCoverImage(string $coverImage): static
     {
         $this->coverImage = $coverImage;
+
+        return $this;
+    }
+
+    public function getNote(): ?float
+    {
+        return $this->note;
+    }
+
+    public function setNote(float $note): static
+    {
+        $this->note = $note;
 
         return $this;
     }
