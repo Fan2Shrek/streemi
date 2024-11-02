@@ -11,6 +11,16 @@ services:
       - pma
       - default
 
+  php:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/app
+    working_dir: /app
+
 networks:
   pma:
     external: true

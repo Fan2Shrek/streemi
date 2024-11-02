@@ -15,7 +15,7 @@ final class MovieController extends AbstractController
     public function details(Media $media): Response
     {
         return $this->render('movie/detail.html.twig', [
-            'media' => $media,
+            'movie' => $media,
         ]);
     }
 

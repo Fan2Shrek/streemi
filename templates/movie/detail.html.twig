@@ -16,7 +16,7 @@
             <div class="tracking-wideflex-1">MMovie<span class="text-red-600">.</span></div>
         </header>
         <section class="">
-            <h1 class="text-lg font-medium text-black">Détails de <span class="font-bold text-red-600">Interstellar</span></h1>
+            <h1 class="text-lg font-medium text-black">Détails de <span class="font-bold text-red-600">{{ movie.title }}</span></h1>
             <div class="flex flex-col items-center mt-9">
                 <a class="relative flex w-full flex-row p-3 items-center justify-center rounded-lg overflow-hidden border hover:scale-105 cursor-pointer transition hover:bg-gray-100">
                     <span class="text-red-600 font-bold mr-2">
@@ -28,7 +28,7 @@
         </section>
         <section class="mt-9">
             <div class="flex flex-col justify-between mt-4 bg-black/10 bg-blend-multiply h-96 overflow-hidden bg-cover bg-center px-7 pt-4 pb-6 text-white -ml-10 -mr-10 rounded-none"
-                 style="background-image: url('images/inception.jpg');" >
+                 style="background-image: url({{ movie.coverImage }});" >
                 <div class="flex -space-x-1 items-center ">
                     <img class="rounded-full w-7 h-7 shadow-lg border border-white" src="https://random.imagecdn.app/100/100?a" alt="" srcset="">
                     <img class="rounded-full w-7 h-7 shadow-lg border border-white" src="https://random.imagecdn.app/100/100?b" alt="" srcset="">
@@ -36,7 +36,7 @@
                     <span class="pl-4 text-xs drop-shadow-lg">Recommandé par 12 amis</span>
                 </div>
                 <div class="bg-gradient-to-r from-black/40 to-transparent -mx-7 -mb-6 px-7 pb-6 pt-2">
-                    <span class="uppercase text-3xl font-semibold drop-shadow-lg ">Inception</span>
+                    <span class="uppercase text-3xl font-semibold drop-shadow-lg ">{{ movie.title }}</span>
                     <div class="mt-4 flex items-center justify-between">
                         <div class="flex space-x-3 items-center">
                             <a href="#" class="px-5 flex items-center justify-center py-2.5 bg-red-600 hover:bg-red-700 rounded-lg text-xs inline-block">
