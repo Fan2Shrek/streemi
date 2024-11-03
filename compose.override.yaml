@@ -1,0 +1,5 @@
+services:
+  mercure:
+    ports:
+      - "8001:80"
+      - "8002:443"
