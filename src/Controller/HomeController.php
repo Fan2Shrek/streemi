@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Enum\MediaTypeEnum;
 use App\Repository\MediaRepository;
+use App\Repository\SubscriptionRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,8 +30,12 @@ final class HomeController extends AbstractController
     }
 
     #[Route('/abonnements', name: 'abonnements')]
-    public function abonnements(): Response
+    public function abonnements(
+        SubscriptionRepository $subscriptionRepository,
+    ): Response
     {
-        return $this->render('abonnements.html.twig');
+        return $this->render('abonnements.html.twig', [
+            'subscriptions' => $subscriptionRepository->findAll(),
+        ]);
     }
 }
