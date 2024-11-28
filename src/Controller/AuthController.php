@@ -10,19 +10,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 final class AuthController extends AbstractController
 {
-    #[Route('/login', name: 'login')]
-    public function login(AuthenticationUtils $authenticationUtils, Request $a): Response
-    {
-        $error = $authenticationUtils->getLastAuthenticationError();
-
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('auth/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-        ]);;
-    }
-
     #[Route('/register', name: 'register')]
     public function register(): Response
     {
@@ -51,5 +38,20 @@ final class AuthController extends AbstractController
     public function confirm(): Response
     {
         return $this->render('auth/confirm.html.twig');
+    }
+
+    #[Route(path: '/login', name: 'login')]
+    public function login(AuthenticationUtils $authenticationUtils): Response
+    {
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('auth/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ]);
     }
 }
