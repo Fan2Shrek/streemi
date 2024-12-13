@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Media;
+use App\Repository\CategoryRepository;
 use App\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
@@ -11,6 +12,11 @@ use Symfony\Component\HttpFoundation\Response;
 #[Route('/movie')]
 final class MovieController extends AbstractController
 {
+    public function __construct(
+        private CategoryRepository $categoryRepository
+    ) {
+    }
+
     #[Route('/details/{id}', name: 'details')]
     public function details(Media $media): Response
     {
@@ -40,7 +46,9 @@ final class MovieController extends AbstractController
     #[Route('/discover', name: 'discover')]
     public function discover(): Response
     {
-        return $this->render('movie/discover.html.twig');
+        return $this->render('movie/discover.html.twig', [
+            'categories' => $this->categoryRepository->findAll(),
+        ]);
     }
 
     public function getLastAddedToList(MediaRepository $mediaRepository, int $count = 3): Response
